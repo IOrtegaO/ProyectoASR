@@ -9,7 +9,7 @@
 <body>
 <h1>Proyecto Final</h1>
 <hr />
-<p>Opciones de la clase de ASR, Beatriz Torreiro Mosquera:</p>
+<p>Opciones de la clase de ASR, Beatriz Torreiro Mosquera e Iciar Ortega Oria de Rueda:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
 <li><a href="insertar?palabra=BeaTorreiro">Insertar</a></li>
