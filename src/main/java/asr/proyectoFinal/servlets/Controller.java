@@ -117,8 +117,9 @@ public class Controller extends HttpServlet {
 //						);
 //					File a = new File(Controller.class.getClassLoader().getResource("cloudant.properties").getFile());
 
+					String url = "https://github.com/BeaTorreiro/Proyecto/tree/master/src/main/resources/images/" + nombreImagen;
 					ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
-							.imagesFile(in)
+							.url(url)
 							.build();
 					
 					ClassifiedImages result = visualRecognition.classify(classifyOptions).execute();
