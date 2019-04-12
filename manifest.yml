@@ -1,11 +1,11 @@
 ---
 applications:
-- name: asrTomcatEjemploCloudant
+- name: Proyecto
   random-route: false
-  path: target/asrTomcatEjemploCloudant.war
+  path: target/Proyecto.war
   memory: 610M
   instances: 1
-  host: asrTomcatEjemploCloudant
+  host: Proyecto
   domain: eu-gb.mybluemix.net
   services:
   - asrBeaCloudantNoSQLDB

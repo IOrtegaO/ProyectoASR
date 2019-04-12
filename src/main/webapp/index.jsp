@@ -7,7 +7,7 @@
 <title>Proyecto ASR</title>
 </head>
 <body>
-<h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps</h1>
+<h1>Proyecto Final</h1>
 <hr />
 <p>Opciones de la clase de ASR, Beatriz Torreiro Mosquera:</p>
 <ul>
