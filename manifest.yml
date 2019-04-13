@@ -8,4 +8,4 @@ applications:
   host: ProyectoBeaIciar
   domain: eu-gb.mybluemix.net
   services:
-  - asrBeaCloudantNoSQLDB
+  - Visual Recognition-Proyecto

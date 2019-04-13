@@ -1,18 +1,12 @@
 package asr.proyectoFinal.servlets;
 
+import java.awt.Desktop;
 import java.awt.Toolkit;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.nio.Buffer;
-import java.nio.file.Files;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +19,7 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
 
+import asr.proyectoFinal.dao.Clasificado;
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 
@@ -78,18 +73,20 @@ public class Controller extends HttpServlet {
 				
 				if(nombreImagen==null)
 				{
-					out.println("usage: /insertar?palabra=palabra_a_traducir");
+					out.println("usage: /insertar?imagen=nombre_imagen");
 				}
 				else
 				{
+					
+					
 					IamOptions options = new IamOptions.Builder()
 							  .apiKey("nXCubQxNrzRAJR_TJ6iZFugB-ZiRq9xSzW_fSV-RnYol")
 							  .build();
 
 					@SuppressWarnings("deprecation")
-					VisualRecognition visualRecognition = new VisualRecognition("2019-03-06", options);
+					VisualRecognition visualRecognition = new VisualRecognition("2018-03-19", options);
 					
-					String respath = "/cloudant.properties";
+					String respath = "/images/" + nombreImagen + ".png";
 					InputStream in = Controller.class.getResourceAsStream(respath);
 					if ( in == null )
 						try {
@@ -98,35 +95,25 @@ public class Controller extends HttpServlet {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					File file = new File(Controller.class.getResource("/cloudant.properties").getFile());
-					
-//					System.out.println(this.getClass().getClassLoader().getResource("images/dog.jpg").toString());
-					
-//					System.out.println(Toolkit.getDefaultToolkit().getClass().getResource("src/main/java/asr/proyectoFinal/images/" + nombreImagen + ".jpg").toString());
-					
-					
-//					String url = getClass().getResource("src/main/resources/images/" + nombreImagen + ".jpg").toString();
-//					String url2 = getClass().getResource("/images/" + nombreImagen + ".jpg").toString();
-//					
-//					File file = new File(
-//							getClass().getClassLoader().getResource("/cloudant.properties").getFile()
-////							getClass().getClassLoader().getResource("/images/" + nombreImagen + ".jpg").getFile()
-//						);
-//					File properties = new File(
-//							getClass().getResource("cloudant.properties").getFile()
-//						);
-//					File a = new File(Controller.class.getClassLoader().getResource("cloudant.properties").getFile());
 
-					String url = "https://github.com/BeaTorreiro/Proyecto/tree/master/src/main/resources/images/" + nombreImagen;
 					ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
-							.url(url)
+							.imagesFile(in)
+							.imagesFilename("dog.png")
 							.build();
 					
+					@SuppressWarnings("deprecation")
 					ClassifiedImages result = visualRecognition.classify(classifyOptions).execute();
-							System.out.println(result);
-					out.println(String.format("Imagen: %s",nombreImagen));
+					
+					Clasificado clasificado = new Clasificado();
+					clasificado.setClase(result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getClassName().toString());
+					
+					clasificado.setScore(result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getScore().toString());
+					
+					request.setAttribute("clasificado", clasificado);
+					request.getRequestDispatcher("index.jsp").forward(request, response);
 				}
 				break;
+
 				
 		}
 		out.println("</html>");

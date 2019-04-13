@@ -1,0 +1,16 @@
+#wrapper {
+  margin-left: 200px;
+}
+#content {
+  float: left;
+  width: 300px;
+
+}
+#sidebar {
+  float: left;
+  width: 200px;
+  margin-left: 600px;
+}
+#cleared {
+  clear: both;
+}

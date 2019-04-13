@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Proyecto ASR</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<h1>Proyecto Final</h1>
@@ -14,9 +15,29 @@
 		<li><a href="listar">Listar</a></li>
 		<li><a href="insertar?palabra=BeaTorreiro">Insertar</a></li>
 	</ul>
-	<a href="pulsar?imagen=dog">
-		<img src="images/dog.jpg">
-	</a>
+	
+	<div class="wrapper">
+  		<div class="column" id="content">
+  			<a href="pulsar?imagen=dog">
+				<img src="images/dog.jpg">
+			</a>
+  		</div>
+  		<div class="column" id="sidebar">
+  		
+  		<%@page import="asr.proyectoFinal.dao.Clasificado" %>
+  		<%
+  			Object clasificado = request.getAttribute("clasificado");
+  			
+  			if (clasificado != null) {
+  		 %>
+  			Es un/a: ${clasificado.clase} <br/>
+  			Precisión: ${clasificado.score}
+  		<%
+  			}
+  		%>
+  		</div>
+	</div>
+	
 	
 </body>
 </html>

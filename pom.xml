@@ -38,12 +38,6 @@
   <dependencies>
 
     <dependency>
-      <groupId>com.cloudant</groupId>
-      <artifactId>cloudant-client</artifactId>
-      <version>2.7.0</version>
-    </dependency>
-
-    <dependency>
       <groupId>javax.ws.rs</groupId>
       <artifactId>javax.ws.rs-api</artifactId>
       <version>2.0</version>
@@ -74,21 +68,34 @@
 			<version>2.12.0</version>
 		</dependency>
 		
-		<dependency>
-		    <groupId>javax.ws.rs</groupId>
-		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>2.1</version>
-		</dependency>
-		
 	<dependency>
     	<groupId>com.ibm.watson.developer_cloud</groupId>
     	<artifactId>java-sdk</artifactId>
-    	<version>6.14.2</version>
+    	<version>6.14.0</version>
   	</dependency>
+  	
+  	<dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+  	
+
+        <dependency>
+            <groupId>com.ibm.cos</groupId>
+            <artifactId>ibm-cos-java-sdk</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
 	
   </dependencies>
 
   <build>
+  	<resources>
+      <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+    </resources>
     <pluginManagement>
       <plugins>
         <plugin>
