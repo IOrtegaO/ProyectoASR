@@ -3,8 +3,10 @@ package asr.proyectoFinal.servlets;
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 
@@ -22,6 +24,7 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOption
 import asr.proyectoFinal.dao.Clasificado;
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
+import asr.proyectoFinal.services.Habla;
 
 /**
  * Servlet implementation class Controller
@@ -78,6 +81,7 @@ public class Controller extends HttpServlet {
 				else
 				{
 					
+					// WATSON VIRTUAL RECOGNITION
 					
 					IamOptions options = new IamOptions.Builder()
 							  .apiKey("nXCubQxNrzRAJR_TJ6iZFugB-ZiRq9xSzW_fSV-RnYol")
@@ -109,8 +113,18 @@ public class Controller extends HttpServlet {
 					
 					clasificado.setScore(result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getScore().toString());
 					
+					// HABLAR
+//					Habla habla = new Habla();
+//					
+//					OutputStream outStream = habla.speak("Hola");
+					
+					
+					  
+					  
+					  
 					request.setAttribute("clasificado", clasificado);
 					request.getRequestDispatcher("index.jsp").forward(request, response);
+					
 				}
 				break;
 
