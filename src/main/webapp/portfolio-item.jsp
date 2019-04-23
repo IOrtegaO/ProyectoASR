@@ -64,6 +64,8 @@ String styleText = "width:auto;height:-webkit-fill-available;padding:100px 0 100
   			%>
 			</p>
 			
+			<audio name ="audio" autoplay preload="auto" autobuffer controls class="audio" ></audio>
+			
 			<a href="index.jsp" class="btn btn-circle page-scroll"  style="line-height:35px; color:rgb(51,51,51); border-top-color:rgb(51,51,51); border-bottom-color:rgb(51,51,51); border-left-color:rgb(51,51,51); border-right-color:rgb(51,51,51);">
 				<i class="fa fa-angle-double-left animated"></i>
 			</a>
