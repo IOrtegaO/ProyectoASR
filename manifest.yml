@@ -1,11 +1,11 @@
 ---
 applications:
-- name: Proyecto
+- name: ProyectoASR
   random-route: false
   path: target/Proyecto.war
   memory: 610M
   instances: 1
-  host: ProyectoBeaIciar
+  host: ProyectoASR
   domain: eu-gb.mybluemix.net
   services:
   - Visual Recognition-Proyecto
