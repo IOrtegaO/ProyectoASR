@@ -2,7 +2,7 @@
 applications:
 - name: ProyectoASR
   random-route: false
-  path: target/ProyectoFinal.war
+  path: target/ProyectoASR.war
   memory: 610M
   instances: 1
   host: ProyectoASRIciar
