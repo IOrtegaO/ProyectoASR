@@ -5,7 +5,7 @@ applications:
   path: target/ProyectoFinal.war
   memory: 610M
   instances: 1
-  host: ProyectoASR
+  host: ProyectoASRIciar
   domain: eu-gb.mybluemix.net
   services:
   - Visual Recognition-Proyecto
